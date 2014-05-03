@@ -1,0 +1,7 @@
+extends ../layout
+
+block content
+    form(action='/release/add', method='POST')
+        input(type='hidden', name='projectid', value=projectid)
+        input(name='name')
+        input(type='submit', value='save')

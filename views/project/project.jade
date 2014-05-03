@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    p Name: #{project.name}
+
+    p Releases:
+        span=releasesCount
+        each release in releases
+            p
+                - var link = '/release/' + release.id
+                a(href=link)
+                    =release.name
+        - var addLink = '/release/add?projectid=' + project.id
+        a(href=addLink)
+            | Add release

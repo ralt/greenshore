@@ -1,0 +1,6 @@
+extends ../layout
+
+block content
+    form(action='/project/add', method='POST')
+        input(name='name')
+        input(type='submit', value='save')

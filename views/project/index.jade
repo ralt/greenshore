@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+    each project in projects
+        - var link = '/project/' + project.id
+        p
+            a(href=link)
+                = project.name
