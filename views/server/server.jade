@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+    p= server.hostname
+    p= server.port
+
+    - var link = '/project/' + projectid
+    a(href=link)
+        | Back to project

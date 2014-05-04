@@ -31,6 +31,11 @@ app.get('/release/add', release.addGet);
 app.post('/release/add', release.addPost);
 app.get('/release/:id', release.getOne);
 
+var server = require('./routes/server');
+app.get('/server/add', server.addGet);
+app.post('/server/add', server.addPost);
+app.get('/server/:id', server.getOne);
+
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

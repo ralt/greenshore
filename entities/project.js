@@ -35,12 +35,12 @@ exports.getReleases = function(id) {
     }).get('rows');
 };
 
-exports.getReleasesCount = function(id) {
+exports.getServers = function(id) {
     return db.connect().then(function() {
         return this.client.queryAsync({
-            name: 'project_releases_count',
-            text: 'SELECT COUNT(*) FROM release WHERE projectid = $1',
+            name: 'project_servers',
+            text: 'SELECT s.id, s.hostname FROM server s LEFT JOIN project_server ps ON s.id = ps.serverid WHERE ps.projectid = $1',
             values: [id]
         });
-    }).get('rows').get(0);
+    }).get('rows');
 };

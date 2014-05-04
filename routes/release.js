@@ -8,12 +8,11 @@ exports.addGet = function(req, res) {
 };
 
 exports.addPost = function(req, res) {
-    var projectid = req.body.projectid;
     release.add({
         name: req.body.name,
-        projectid: projectid
-    }).then(function() {
-        res.redirect('/project/' + projectid);
+        projectid: req.body.projectid
+    }).then(function(releaseid) {
+        res.redirect('/release/' + releaseid);
     });
 };
 

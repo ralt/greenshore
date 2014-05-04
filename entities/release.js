@@ -3,7 +3,7 @@ var db = require('./postgresql');
 exports.add = function(release) {
     return db.connect().then(function() {
         return this.client.queryAsync(
-            'INSERT INTO release (name, type, projectid) VALUES ($1, $2, $3)',
+            'INSERT INTO release (name, type, projectid) VALUES ($1, $2, $3) RETURNING id',
             [release.name, 0, release.projectid]
         );
     });

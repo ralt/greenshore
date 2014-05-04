@@ -19,7 +19,7 @@ exports.addGet = function(req, res) {
 
 exports.addPost = function(req, res) {
     project.add({ name: req.body.name }).then(function(project) {
-        res.redirect('project/' + project.id);
+        res.redirect('/project/' + project.id);
     });
 };
 
@@ -27,13 +27,13 @@ exports.getOne = function(req, res) {
     Promise.all([
         project.getOne(req.params.id),
         project.getReleases(req.params.id),
-        project.getReleasesCount(req.params.id)
-    ]).spread(function(project, releases, releasesCount) {
+        project.getServers(req.params.id)
+    ]).spread(function(project, releases, servers) {
         res.render('project/project', {
             title: project.name,
             project: project,
             releases: releases,
-            releasesCount: releasesCount.count
+            servers: servers
         });
     });
 };

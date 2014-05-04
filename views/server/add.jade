@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+    form(action='/server/add', method='POST')
+        input(type='hidden', name='projectid', value=projectid)
+        input(name='hostname')
+        input(name='port')
+        input(type='submit', value='save')

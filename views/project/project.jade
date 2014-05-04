@@ -1,15 +1,24 @@
 extends ../layout
 
 block content
-    p Name: #{project.name}
-
-    p Releases:
-        span=releasesCount
-        each release in releases
-            p
-                - var link = '/release/' + release.id
-                a(href=link)
-                    =release.name
-        - var addLink = '/release/add?projectid=' + project.id
-        a(href=addLink)
-            | Add release
+    .project
+        .name
+            | #{project.name}
+        .releases
+            each release in releases
+                .release
+                    - var link = '/release/' + release.id
+                    a(href=link)
+                        =release.name
+            - var addLink = '/release/add?projectid=' + project.id
+            a(href=addLink)
+                | Create new release
+        .servers
+            each server in servers
+                .server
+                    - var link = '/server/' + server.id
+                    a(href=link)
+                        =server.hostname
+            - var addLink = '/server/add?projectid=' + project.id
+            a(href=addLink)
+                | Create new server
